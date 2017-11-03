@@ -33,7 +33,7 @@ function getEveCentralData($id) {
 	//Try to get
 	$json = $mem->get("evecentral-".$id);
 	if($json === false) {
-		$json = file_get_contents("http://api.eve-central.com/api/marketstat/json?typeid=".$id."&usesystem=30000142");
+		$json = file_get_contents("https://api.evemarketer.com/ec/marketstat/json?typeid=".$id."&usesystem=30000142");
 		$json = json_decode($json);
 		$json = $json[0];
 		$json = json_encode($json);
@@ -60,18 +60,10 @@ $blocks = array(
 );
 
 //Control Tower data
-addtower(12235, "Amarr Large", "Amarr Control Tower", 4247, 40);
-addtower(20059, "Amarr Medium", "Amarr Control Tower Medium", 4247, 20);
-addtower(20060, "Amarr Small", "Amarr Control Tower Small", 4247, 10);
-addtower(12236, "Gallente Large", "Gallente Control Tower", 4312, 40);
-addtower(20063, "Gallente Medium", "Gallente Control Tower Medium", 4312, 20);
-addtower(20064, "Gallente Small", "Gallente Control Tower Small", 4312, 10);
-addtower(16214, "Minmatar Large", "Minmatar Control Tower", 4246, 40);
-addtower(20065, "Minmatar Medium", "Minmatar Control Tower Medium", 4246, 20);
-addtower(20066, "Minmatar Small", "Minmatar Control Tower Small", 4246, 10);
-addtower(16213, "Caldari Large", "Caldari Control Tower", 4051, 40);
-addtower(20061, "Caldari Medium", "Caldari Control Tower Medium", 4051, 20);
-addtower(20062, "Caldari Small", "Caldari Control Tower Small", 4051, 10);
+addtower(12235, "Amarr Fueled Drill", "Standup Moon Drill I", 4247, 5);
+addtower(12236, "Gallente Fueled Drill", "Standup Moon Drill I", 4312, 5);
+addtower(16214, "Minmatar Fueled Drill", "Standup Moon Drill I", 4246, 5);
+addtower(16213, "Caldari Fueled Drill", "Standup Moon Drill I", 4051, 5);
 
 
 //Mineral Data
@@ -142,7 +134,7 @@ if(!isset($_GET['data'])) {
 			$scope.getFuelCost = function() {
 				var tower = $scope.getTower($scope.active);
 				var block = $scope.getBlock(tower.blockid);
-				var cost = block.sell * $scope.getUsage(tower.usage) * 24 * 30;
+				var cost = block.sell * tower.usage * 24 * 30;
 				return cost;
 			};
 			
@@ -157,15 +149,6 @@ if(!isset($_GET['data'])) {
 					return "text-danger";
 				}
 			}
-			
-			$scope.getUsage = function(usage) {
-				if($scope.sovbonus == true) {
-					return Math.round(usage * 0.75);
-				} else {
-					return usage;
-				}
-			}
-			
 			
 			$scope.activeTower = function() {
 				return $scope.getTower($scope.active);
@@ -270,9 +253,9 @@ if(!isset($_GET['data'])) {
 								<th>Fuel Blocks</th>
 								<th class="text-right">Sell (per unit)</th>
 								<th class="text-right">Buy (per unit)</th>
-								<th class="text-right">10</th>
-								<th class="text-right">20</th>
-								<th class="text-right">40</th>
+								<th class="text-right">24 Hour</th>
+								<th class="text-right">7 Days</th>
+								<th class="text-right">30 Days</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -281,15 +264,16 @@ if(!isset($_GET['data'])) {
 								<td>{{block.name}}</td>
 								<td class="text-right">{{isk(block.sell)}}</td>
 								<td class="text-right">{{isk(block.buy)}}</td>
-								<td class="text-right">{{isk(block.sell * 10)}}</td>
-								<td class="text-right">{{isk(block.sell * 20)}}</td>
-								<td class="text-right">{{isk(block.sell * 40)}}</td>
+								<td class="text-right">{{isk(block.sell * 120)}}</td>
+								<td class="text-right">{{isk(block.sell * 840)}}</td>
+								<td class="text-right">{{isk(block.sell * 3600)}}</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<h6><i>* All figures based on 30 day month unless stated otherwise</i></h6>
-				<h6><i>** All figures calculated using 5th percentile sell price from <a href="https://eve-central.com/">eve-central</a></i></h6>
+				<h6><i>** All Data assumed 100% moon, divide these incomes by yield, WIP to adjust yields on page</i></h6>
+				<h6><i>*** All figures calculated using 5th percentile sell price from <a href="https://evemarketer.com//">evemarketer</a></i></h6>
 			</div>
 		</div>
 	</div>
