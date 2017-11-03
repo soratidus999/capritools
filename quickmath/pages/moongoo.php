@@ -67,26 +67,26 @@ addtower(16213, "Caldari Fueled Drill", "Standup Moon Drill I", 4051, 5);
 
 
 //Mineral Data
-addmineral(16650, "Dysprosium", 64);
-addmineral(16651, "Neodymium", 64);
-addmineral(16652, "Promethium", 64);
-addmineral(16653, "Thulium", 64);
-addmineral(16649, "Technetium", 32);
-addmineral(16648, "Hafnium", 32);
-addmineral(16647, "Caesium", 32);
-addmineral(16646, "Mercury", 32);
-addmineral(16643, "Cadmium", 16);
-addmineral(16644, "Platinum", 16);
-addmineral(16642, "Vanadium", 16);
-addmineral(16641, "Chromium", 16);
-addmineral(16640, "Cobalt", 8);
-addmineral(16639, "Scandium", 8);
-addmineral(16638, "Titanium", 8);
-addmineral(16637, "Tungsten", 8);
-addmineral(16634, "Atmospheric Gases", 4);
-addmineral(16635, "Evaporate Deposits", 4);
-addmineral(16633, "Hydrocarbons", 4);
-addmineral(16636, "Silicates", 4);
+addmineral(16650, "Xenotime", 64);
+addmineral(16651, "Monazite", 64);
+addmineral(16652, "Loparite", 64);
+addmineral(16653, "Ytterbite", 64);
+addmineral(16649, "Carnotite", 32);
+addmineral(16648, "Zircon", 32);
+addmineral(16647, "Pollucite", 32);
+addmineral(16646, "Cinnabar", 32);
+addmineral(16643, "Otavite", 16);
+addmineral(16644, "Sperrylite", 16);
+addmineral(16642, "Vanadinite", 16);
+addmineral(16641, "Chromite", 16);
+addmineral(16640, "Cobaltite", 8);
+addmineral(16639, "Euxenite", 8);
+addmineral(16638, "Titanite", 8);
+addmineral(16637, "Scheelite", 8);
+addmineral(16634, "Zeolites", 4);
+addmineral(16635, "Sylvite", 4);
+addmineral(16633, "Bitumens", 4);
+addmineral(16636, "Coesite", 4);
 
 
 //Check active tower
