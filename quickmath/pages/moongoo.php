@@ -139,7 +139,7 @@ if(!isset($_GET['data'])) {
 			};
 			
 			$scope.income = function(sell) {
-				return sell * 100 * 30 * 24;
+				return sell * 14200000;
 			}
 			
 			$scope.profitClass = function(isk) {
